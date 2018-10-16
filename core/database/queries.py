@@ -7,7 +7,7 @@
 # (modificação usuário)
 DB_CRIAR_USUARIO = "INSERT INTO usuarios(nome, email, senha, bio) VALUES (%s,%s,%s,%s);"
 DB_EXCLUIR_USUARIO = "DELETE FROM usuarios WHERE id_usuario = %s;"
-
+DB_EXCLUIR_USUARIO_POR_EMAIL = "DELETE FROM usuarios WHERE email = %s;"
 # (modificação produto)
 DB_CRIAR_PRODUTO = "INSERT INTO produtos(id_dono, nome, preco, descricao) VALUES (%s,%s,%s,%s);"
 DB_EXCLUIR_PRODUTO = "DELETE FROM produtos WHERE id_produto = %s;"
