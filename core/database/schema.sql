@@ -36,8 +36,7 @@ CREATE TABLE produtos(
 	descricao TEXT,
 	data_adicao TIMESTAMP NOT NULL,
 	PRIMARY KEY(id_produto),
-	FOREIGN KEY(id_dono) REFERENCES usuarios(id_usuario) ON DELETE CASCADE,
-	UNIQUE(nome_grupo)
+	FOREIGN KEY(id_dono) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
 );
 
 /* Relacionamento: Produto -> Usuario */
