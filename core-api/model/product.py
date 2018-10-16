@@ -1,21 +1,14 @@
 
-class Product:
-  """ Classe Product: 
-    @params:
-  """
+class Product(object):
+  """ Classe Produto"""
 
-  def __init__(self, id_, name, features):
+  def __init__(self, product_id, owner_id, name, price, description):
+    """ Chaves Primária: Product ID, Chave Estrangeira: Owner ID"""
+    self.product_id = product_id
+    self.owner_id = owner_id
     self.name = name
-    self.id = id_
-    self.details = {}
-
+    self.price = price
+    self.description = description
 
   def __repr__(self):
     return f"{self.__dict__}"
-
-  def add_detail(self, key, value): 
-    self.details[key] = value
-
-  def del_detail(self, key):
-    if self.details.get(key): self.details.pop(key)
-
