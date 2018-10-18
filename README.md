@@ -1,14 +1,23 @@
 # SARI
 SARI - Sistema de Alocação, Reserva e Inclusão.
 
+Projeto da Disciplina de Métodos de Projeto de Software.
+
+## TODO:
+
+
 ## Hierarquia de Arquivos
 ```text
 ```
 
 ## Padrões Utilizados
+### Estruturais 
+* Bridge
+* Facade
+* 
 ```
+Bridge
 Singleton - 
-Decorator - Em todos os lugadres
 Façade - 
 Adapter
 

@@ -1,6 +1,6 @@
 
 class Produto(object):
-  """ Classe Produto """
+  """ Entidade Produto """
 
   def __init__(self, id_produto, id_dono, nome, preco, descricao):
     """ Chaves Primária: id_produto, Estrangeira: id_dono
@@ -9,6 +9,6 @@ class Produto(object):
     self.id_dono = id_dono
     self.nome = nome
     self.preco = preco
-    self.descrica = descricao
+    self.descricao = descricao
 
   def __repr__(self): return f"{self.__dict__}"
