@@ -4,7 +4,7 @@ from sari.configuration.config import DATABASE_CONFIG
 from sari.infrastructure.control.template import ControlAbstract
 from sari.infrastructure.utils.checking import check_value
 from sari.database.queries import * #pylint: disable=W0614
-
+from sari.infrastructure.control.singleton import Singleton
 
 
 def init_db():
@@ -43,8 +43,7 @@ def db_write(func):
 
 
 
-class MariaDBController(ControlAbstract):
-  """ Interação e Persistência no Banco de Dados """
+class MariaDBController(ControlAbstract, Singleton):
 
   def __init__(self):
     self._db, self._cursor = None, None

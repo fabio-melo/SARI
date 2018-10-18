@@ -1,10 +1,12 @@
 from sari.infrastructure.control.template import ControlAbstract
+from sari.infrastructure.control.singleton import Singleton
 from sari.model.usuario import Usuario
 from sari.model.aluguel import Aluguel
 from sari.model.produto import Produto
+
 import pickle
 
-class LocalController(ControlAbstract):
+class LocalController(ControlAbstract,Singleton):
 
   def __init__(self):
     self.usuarios = {}
