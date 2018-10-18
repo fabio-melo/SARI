@@ -1,9 +1,11 @@
 import MySQLdb as mariadb
 
-from core.configuration.config import DATABASE_CONFIG 
-from core.controller.interface import ControlAbstract
-from core.controller.utils import check_value
-from core.database.queries import * #pylint: disable=W0614
+from sari.configuration.config import DATABASE_CONFIG 
+from sari.controller.control.abstract import ControlAbstract
+from sari.controller.utils.checking import check_value
+from sari.database.queries import * #pylint: disable=W0614
+
+
 
 def init_db():
   try:
@@ -41,9 +43,8 @@ def db_write(func):
 
 
 
-# SINGLETON
-
-class MariaDBConnector(ControlAbstract):
+class MariaDBController(ControlAbstract):
+  """ Interação e Persistência no Banco de Dados """
 
   def __init__(self):
     self._db, self._cursor = None, None

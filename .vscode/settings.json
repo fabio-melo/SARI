@@ -5,5 +5,6 @@
     "**/__init__.*": true,
     "**/__pycache__": true,
     "**/__pycache__.*": true
-  }
+  },
+  "python.pythonPath": ".env\\Scripts\\python.exe"
 }
