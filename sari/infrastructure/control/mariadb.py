@@ -1,8 +1,8 @@
 import MySQLdb as mariadb
 
 from sari.configuration.config import DATABASE_CONFIG 
-from sari.controller.control.abstract import ControlAbstract
-from sari.controller.utils.checking import check_value
+from sari.infrastructure.control.template import ControlAbstract
+from sari.infrastructure.utils.checking import check_value
 from sari.database.queries import * #pylint: disable=W0614
 
 

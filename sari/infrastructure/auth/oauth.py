@@ -3,7 +3,7 @@
 # Mock Autenticação por Senha
 # quando se utiliza  banco de dados, autenticamos por session ID do flask
 
-from sari.controller.auth.strategies import Strategy
+from sari.infrastructure.auth.strategies import Strategy
 
 class AuthOAUTH(Strategy):
   def __init__(self):
