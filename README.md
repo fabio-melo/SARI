@@ -26,6 +26,7 @@ Projeto da Disciplina de Métodos de Projeto de Software.
 |   |   |   ├── template.py # Padrão Template
 |   |   ├── factory # fabrica da aplicação
 |   |   |   ├── sistema.py # inicializador do sistema SARI
+|   |   |   ├── sfactory.py # fabrica do SARI
 |   |   ├── utils # utilidades simples
 |   |   |   ├── checking.py # validação de strings 
 |   └── models # modelo dos objetos utilizados
@@ -37,9 +38,9 @@ Projeto da Disciplina de Métodos de Projeto de Software.
 |   |   ├── produto.bin
 |   |   ├── usuario.bin
 ├── readme.md #este arquivo
-├── teste.py # teste das funcionalidadess do SARI
+├── teste.py # teste das funcionalidades do SARI
 
-
+```
 
 ## Padrões Utilizados
 * Façade
@@ -47,7 +48,7 @@ Projeto da Disciplina de Métodos de Projeto de Software.
 * Strategy
 * Template
 * Factory
-```
+
 
 ## TO-DO
 * Interface Gráfica

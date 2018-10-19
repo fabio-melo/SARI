@@ -5,9 +5,9 @@ import sari.infrastructure.control.template
 
 class SistemaSARI(object):
   # Escolher o tipo de Persistencia e o tipo de  Autenticacao
-  def __init__(self):
-    self.control = None
-    self.auth = None
+  def __init__(self, control, auth):
+    self.control, self.auth = None, None
+    self.iniciar_sistema(control, auth)
 
   #DESTRUTOR
   def __del__(self):
