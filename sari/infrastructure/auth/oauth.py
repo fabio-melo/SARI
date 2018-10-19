@@ -16,6 +16,7 @@ class AuthOAUTH(Strategy):
       hash_da_senha = f'{login}{senha}'
       if hash_da_senha == 'adminadmin':
         oauth_cookie = True
+        print("autenticado com sucesso usando oauth")
         return oauth_cookie
       else:
         raise Exception('TOKEN OAUTH INVALIDO')

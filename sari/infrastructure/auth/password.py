@@ -10,6 +10,7 @@ class AuthPassword(Strategy):
     try:
       if login == 'admin' and senha == 'admin':
         magic_cookie = True
+        print("autenticado com sucesso usando senha")
         return magic_cookie
       else:
         raise Exception('Usuario / Senha Invalido')

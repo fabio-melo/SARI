@@ -23,6 +23,13 @@ class LocalController(ControlAbstract,Singleton):
   def notificar_admin(self):
     print("SISTEMA SARI INICIADO - MODO ARMAZENAMENTO LOCAL")
 
+  def finalizar_sistema(self):
+    self.salvar_arquivo('sari/storage/usuario.bin','sari/storage/produto.bin', 'sari/storage/aluguel.bin')
+
+  def notificar_admin_final(self):
+    print("SISTEMA SARI FINALIZADO - MODO ARMAZENAMENTO LOCAL")
+
+
   def carregar_arquivo(self, a_usuarios, a_produtos, a_alugueis):
     with open(a_usuarios,'rb') as a_usuarios:
       self.usuarios = pickle.load(a_usuarios)
@@ -48,6 +55,7 @@ class LocalController(ControlAbstract,Singleton):
     
     usr = Usuario(id_usuario, email, nome, senha, bio)
     self.usuarios[id_usuario] = usr
+    print(f"ID: {id_usuario} Usuario {nome} Criado")
     
   
   def excluir_usuario(self, email):

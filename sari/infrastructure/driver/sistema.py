@@ -4,19 +4,24 @@ import sari.infrastructure.control.template
 
 
 class SistemaSARI(object):
-  # Escolher o tipo de Persistencia e o tipo de 
+  # Escolher o tipo de Persistencia e o tipo de  Autenticacao
   def __init__(self):
     self.control = None
     self.auth = None
+
+  #DESTRUTOR
+  def __del__(self):
+    self.finalizar_sistema()
 
   def iniciar_sistema(self, control, auth):
     try:
       #persistencia
       if control == 'db':
         self.control = mariadb.MariaDBController()
-        self.control.inicializar_sistema()
+        self.control.inicializar_persistencia() # template method
       elif control == 'local':
         self.control = localstorage.LocalController()
+        self.control.inicializar_persistencia() 
       else: 
         raise Exception("Método de Persistencia não Selecionado")
       #autenticação
@@ -29,5 +34,8 @@ class SistemaSARI(object):
 
     except Exception as e:
       print(e)
+  
+  def finalizar_sistema(self):
+    self.control.finalizar_persistencia()
 
 

@@ -1,6 +1,0 @@
-#pylint: disable
-
-self.email = self.check_value(email, regex=r'[A-Za-z0-9@.]+$') # unique ID
-    self.nome = self.check_value(nome, regex=r'[A-Za-z0-9 ]+$')
-    self.senha= self.check_value(senha, regex=r'[A-Za-z0-9@.\+\-\*_\-]+$')
-    self.detalhes = detalhes

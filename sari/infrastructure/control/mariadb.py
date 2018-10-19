@@ -54,6 +54,19 @@ class MariaDBController(ControlAbstract, Singleton):
     self.cursor = self._db.cursor()
     self.cursor.execute("USE sari;")
 
+
+  def inicializar_sistema(self):
+    self._reload()
+
+  def notificar_admin(self):
+    print("SISTEMA SARI INICIADO - MODO BANCO DE DADOS")
+
+  def finalizar_sistema(self):
+    self.db.close()
+
+  def notificar_admin_final(self):
+    print("SISTEMA SARI FINALIZADO - MODO BANCO DE DADOS")
+
   @db_write
   def criar_usuario(self, nome, email, senha, bio):
     try:
