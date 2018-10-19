@@ -27,6 +27,10 @@ Projeto da Disciplina de Métodos de Projeto de Software.
 |   |   ├── factory # fabrica da aplicação
 |   |   |   ├── sistema.py # inicializador do sistema SARI
 |   |   |   ├── sfactory.py # fabrica do SARI
+|   |   ├── reports # gerador de relatorios
+|   |   |   ├── abstrato.py # abstração dos relatorios
+|   |   |   ├── geradorCSV.py # gera o relatorio em formato CSV
+|   |   |   ├── geradorTXT.py # gera o relatorio em texto puro
 |   |   ├── utils # utilidades simples
 |   |   |   ├── checking.py # validação de strings 
 |   └── models # modelo dos objetos utilizados
