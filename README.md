@@ -61,6 +61,6 @@ Projeto da Disciplina de Métodos de Projeto de Software.
 
 ## Dependências
 ```text
-* Para o banco de dados: MariaDB e mysqlclient: https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysql-python
+* Para o banco de dados: MariaDB e mysqlclient: https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient
 
 ```
