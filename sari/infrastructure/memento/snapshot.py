@@ -12,7 +12,7 @@ class SnapshotMemento(object):
       self.estados.pop(0)
       self.estados.append(pickle.dump(self.estados))
 
-  def restaurar_ultimosnapshot(self):
+  def restaurar_ultimo_snapshot(self):
     try:
       return pickle.loads(self.estados.pop())
     except:
