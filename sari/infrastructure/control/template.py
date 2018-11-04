@@ -41,3 +41,9 @@ class ControlAbstract(object):
 
   @abstractmethod
   def excluir_aluguel(self): pass
+
+  @abstractmethod
+  def criar_snapshot(self): pass
+
+  @abstractmethod
+  def restaurar_estado(self): pass

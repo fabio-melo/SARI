@@ -21,13 +21,15 @@ class CommandInterface(object):
       elif texto[0] == "EXCLUIRPRODUTO":
         self.invoker.enfileirar(ExcluirProdutoCommand(self.core, texto[1]))
       elif texto[0] == "CRIARALUGUEL":
-        self.invoker.enfileirar(CriarAluguelCommand(self.core, texto[1], texto[2]))
+        self.invoker.enfileirar(CriarAluguelCommand(self.core, texto[1], texto[2], texto[3]))
       elif texto[0] == "EXCLUIRALUGUEL":
         self.invoker.enfileirar(ExcluirAluguelCommand(self.core, texto[1]))
       elif texto[0] == "ENTRAR":
         self.invoker.enfileirar(EntrarCommand(self.core, texto[1],texto[2]))
       elif texto[0] == "SAIR":
         self.invoker.enfileirar(SairCommand(self.core))
+      elif texto[0] == "DESFAZER":
+        self.invoker.enfileirar(DesfazerCommand(self.core))
     except:
         self.receiver.notificar_todos(f"Erro Executando  {texto}")
 

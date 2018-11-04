@@ -1,6 +1,13 @@
 ENTRAR admin admin
 CRIARUSUARIO usuario teste@teste.com testando test
 CRIARPRODUTO usuario produto produt produto
+CRIARALUGUEL 1 2 204
+REMOVERALGUEL 1
+DESFAZER
 REMOVERPRODUTO 11
 REMOVERUSUARIO teste@teste.com
+CRIARPRODUTO outrproduto produ prod producao
+DESFAZER
+CRIARUSUARIO joao joao@joao.com josen23 joaoo4
+DESFAZER
 SAIR

@@ -7,14 +7,14 @@ class SnapshotMemento(object):
 
   def criar_snapshot(self, estado):
     if len(self.estados) < self.maximo:
-      self.estados.append(pickle.dump(estado))
+      self.estados.append(pickle.dumps(estado))
     else:
       self.estados.pop(0)
-      self.estados.append(pickle.dump(self.estados))
+      self.estados.append(pickle.dumps(self.estados))
 
   def restaurar_ultimo_snapshot(self):
     try:
       return pickle.loads(self.estados.pop())
-    except:
-      print("Não há estados para restaurar")
+    except Exception as e:
+      pass
   
