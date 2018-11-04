@@ -4,9 +4,12 @@ class BaseCommand(object):
   
   __metaclass__ = ABCMeta
   
-  def __init__(self, core, *args): 
+  def __init__(self, core, args): 
     self.args = args
     self.core = core
+
+  def __repr__(self):
+    return f"{type(self).__name__}: {self.args}"
 
   @abstractmethod
   def execute(self): pass
@@ -45,7 +48,7 @@ class CriarAluguelCommand(BaseCommand):
     super().__init__(core, args)
   def execute(self):
     #  id_produto, id_alugador, data_aluguel
-    self.core.control.criar_aluguel(self.args[0], self.args[1], self.args[2])
+    self.core.control.criar_aluguel(self.args[0], self.args[1])
 
 class ExcluirAluguelCommand(BaseCommand):
   def __init__(self, core, *args):
@@ -53,3 +56,17 @@ class ExcluirAluguelCommand(BaseCommand):
   def execute(self):
     #  id_aluguel
     self.core.control.excluir_aluguel(self.args[0])
+
+
+# AUTENTICACAO
+class EntrarCommand(BaseCommand):
+  def __init__(self, core, *args):
+    super().__init__(core, args)
+  def execute(self):
+    self.core.auth.entrar(self.args[0], self.args[1])
+
+class SairCommand(BaseCommand):
+  def __init__(self, core, *args):
+    super().__init__(core, args)
+  def execute(self):
+    self.core.auth.sair()

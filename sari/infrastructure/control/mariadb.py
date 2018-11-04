@@ -5,6 +5,8 @@ from sari.infrastructure.control.template import ControlAbstract
 from sari.infrastructure.utils.checking import check_value
 from sari.database.queries import * #pylint: disable=W0614
 from sari.infrastructure.control.singleton import Singleton
+from sari.infrastructure.observer.receiver import Receiver
+
 
 
 def init_db():
@@ -46,6 +48,7 @@ def db_write(func):
 class MariaDBController(ControlAbstract, Singleton):
 
   def __init__(self):
+    self.receiver = Receiver()
     self._db, self._cursor = None, None
       
   def _reload(self):
@@ -59,13 +62,13 @@ class MariaDBController(ControlAbstract, Singleton):
     self._reload()
 
   def notificar_admin(self):
-    print("SISTEMA SARI INICIADO - MODO BANCO DE DADOS")
+    self.receiver.notificar_todos("SISTEMA SARI INICIADO - MODO BANCO DE DADOS")
 
   def finalizar_sistema(self):
     self.db.close()
 
   def notificar_admin_final(self):
-    print("SISTEMA SARI FINALIZADO - MODO BANCO DE DADOS")
+    self.receiver.notificar_todos("SISTEMA SARI FINALIZADO - MODO BANCO DE DADOS")
 
   @db_write
   def criar_usuario(self, nome, email, senha, bio):
@@ -81,10 +84,10 @@ class MariaDBController(ControlAbstract, Singleton):
       check_value(bio, max=256, regex=False)
       
       self._cursor.execute(DB_CRIAR_USUARIO, (nome, email, senha, bio,))
-      print(f"DB: Usuário Adicionado: {nome} {email} {senha} {bio}")
+      self.receiver.notificar_todos(f"DB: Usuário Adicionado: {nome} {email} {senha} {bio}")
     
     except Exception as e:
-      print(e)
+      self.receiver.notificar_todos(e)
 
   @db_write
   def excluir_usuario(self,email): 
@@ -94,11 +97,11 @@ class MariaDBController(ControlAbstract, Singleton):
       user = list(*zip(*zip(*user)))
       if user: 
         self._cursor.execute(DB_EXCLUIR_USUARIO_POR_EMAIL, (email,))
-        print(f"DB: Usuário Excluido: {email}")
+        self.receiver.notificar_todos(f"DB: Usuário Excluido: {email}")
       else:
         raise Exception("Usuario Não Existe")
     except Exception as e: 
-      print(e)
+      self.receiver.notificar_todos(e)
       
   @db_write
   def criar_produto(self, id_dono, nome, preco, descricao):
@@ -110,16 +113,16 @@ class MariaDBController(ControlAbstract, Singleton):
 
       self._cursor.execute(DB_PROCURAR_USUARIO_POR_ID, (id_dono,))
       dono_existe = self._cursor.fetchall()
-      print(dono_existe)
+      self.receiver.notificar_todos(dono_existe)
 
       if dono_existe:
         self._cursor.execute(DB_CRIAR_PRODUTO, (id_dono, nome, preco, descricao,))
-        print(f"DB: PRODUTO Adicionado: {nome} {preco} {descricao} {id_dono}")
+        self.receiver.notificar_todos(f"DB: PRODUTO Adicionado: {nome} {preco} {descricao} {id_dono}")
       else:
         raise Exception('Usuario Não Existe')
 
     except Exception as e:
-      print(e)
+      self.receiver.notificar_todos(e)
 
   def excluir_produto(self): 
     pass

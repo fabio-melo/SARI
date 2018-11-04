@@ -3,12 +3,14 @@ from sari.infrastructure.control.singleton import Singleton
 from sari.model.usuario import Usuario
 from sari.model.aluguel import Aluguel
 from sari.model.produto import Produto
+from sari.infrastructure.observer.receiver import Receiver
 
 import pickle
 
 class LocalController(ControlAbstract,Singleton):
 
   def __init__(self):
+    self.receiver = Receiver()
     self.usuarios = {}
     self.produtos = {}
     self.alugueis = {}
@@ -21,13 +23,13 @@ class LocalController(ControlAbstract,Singleton):
     self.carregar_arquivo('sari/storage/usuario.bin','sari/storage/produto.bin', 'sari/storage/aluguel.bin')
 
   def notificar_admin(self):
-    print("SISTEMA SARI INICIADO - MODO ARMAZENAMENTO LOCAL")
+    self.receiver.notificar_todos("SISTEMA SARI INICIADO - MODO ARMAZENAMENTO LOCAL")
 
   def finalizar_sistema(self):
     self.salvar_arquivo('sari/storage/usuario.bin','sari/storage/produto.bin', 'sari/storage/aluguel.bin')
 
   def notificar_admin_final(self):
-    print("SISTEMA SARI FINALIZADO - MODO ARMAZENAMENTO LOCAL")
+    self.receiver.notificar_todos("SISTEMA SARI FINALIZADO - MODO ARMAZENAMENTO LOCAL")
 
 
   def carregar_arquivo(self, a_usuarios, a_produtos, a_alugueis):
@@ -55,7 +57,7 @@ class LocalController(ControlAbstract,Singleton):
     
     usr = Usuario(id_usuario, email, nome, senha, bio)
     self.usuarios[id_usuario] = usr
-    print(f"ID: {id_usuario} Usuario {nome} Criado")
+    self.receiver.notificar_todos(f"ID: {id_usuario} Usuario {nome} Criado")
     
   
   def excluir_usuario(self, email):
@@ -64,7 +66,7 @@ class LocalController(ControlAbstract,Singleton):
         if value.email == email:
           self.usuarios.pop(key)
     except:
-      print(f'Usuario {email} não encontrado')
+      self.receiver.notificar_todos(f'Usuario {email} não encontrado')
 
   def criar_produto(self, id_dono, nome, preco, descricao):
     id_produto = self.prox_produto
@@ -78,7 +80,7 @@ class LocalController(ControlAbstract,Singleton):
       if id_produto in self.produtos.keys():
         self.usuarios.pop(id_produto)
     except:
-      print(f'Produto {id_produto} não encontrado')
+      self.receiver.notificar_todos(f'Produto {id_produto} não encontrado')
 
   def criar_aluguel(self, id_produto, id_alugador, data_aluguel): 
     id_trans = self.prox_aluguel
@@ -91,4 +93,4 @@ class LocalController(ControlAbstract,Singleton):
       if id_trans in self.alugueis.keys():
         self.alugueis.pop(id_trans)
     except:
-      print(f'Aluguel {id_trans} não encontrado')
+      self.receiver.notificar_todos(f'Aluguel {id_trans} não encontrado')

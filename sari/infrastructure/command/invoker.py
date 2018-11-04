@@ -13,13 +13,13 @@ class CommandInvoker():
   def executar_fila(self):
     ''' Executa tudo que está na fila e zera a fila '''
     for comando in self.__fila_comandos:
-      self.receiver.notificar_todos(f"Executando Comando {comando}")
+      self.receiver.notificar_todos(f"Executando {comando}")
       comando.execute()
 
     self.__fila_comandos = []
   
   def executar_imediatamente(self, comando):
-    self.receiver.notificar_todos(f"Executando Comando {comando}")
+    self.receiver.notificar_todos(f"Executando {comando}")
     comando.execute()
 
 
