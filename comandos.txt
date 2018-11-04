@@ -1,0 +1,6 @@
+ENTRAR admin admin
+CRIARUSUARIO usuario teste@teste.com testando test
+CRIARPRODUTO usuario produto produt produto
+REMOVERPRODUTO 11
+REMOVERUSUARIO teste@teste.com
+SAIR

@@ -74,6 +74,7 @@ class LocalController(ControlAbstract,Singleton):
     
     prod = Produto(id_produto, id_dono, nome, preco, descricao)
     self.produtos[id_produto] = prod
+    self.receiver.notificar_todos(f'PRODUTO {id_produto}: {nome} CRIADO')
       
   def excluir_produto(self, id_produto): 
     try:
@@ -87,6 +88,8 @@ class LocalController(ControlAbstract,Singleton):
     self.prox_aluguel += 1
     alg = Aluguel(id_trans,id_produto, id_alugador, data_aluguel)
     self.alugueis[id_trans] = alg
+    self.receiver.notificar_todos(f'ALUGUEL {id_trans} {id_alugador} CRIADO')
+
 
   def excluir_aluguel(self, id_trans): 
     try:

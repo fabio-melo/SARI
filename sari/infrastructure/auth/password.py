@@ -24,6 +24,7 @@ class AuthPassword(Strategy):
   def sair(self):
     try:
       magic_cookie = False
+      self.receiver.notificar_todos("deslogado com sucesso")
       return magic_cookie
     except Exception as e:
       self.receiver.notificar_todos(e)

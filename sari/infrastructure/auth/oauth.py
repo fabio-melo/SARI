@@ -20,6 +20,7 @@ class AuthOAUTH(Strategy):
       if hash_da_senha == 'adminadmin':
         oauth_cookie = True
         self.receiver.notificar_todos("autenticado com sucesso usando oauth")
+        self.receiver.notificar_todos("deslogado com sucesso")
         return oauth_cookie
       else:
         raise Exception('TOKEN OAUTH INVALIDO')

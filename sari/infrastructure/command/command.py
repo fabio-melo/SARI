@@ -48,7 +48,7 @@ class CriarAluguelCommand(BaseCommand):
     super().__init__(core, args)
   def execute(self):
     #  id_produto, id_alugador, data_aluguel
-    self.core.control.criar_aluguel(self.args[0], self.args[1])
+    self.core.control.criar_aluguel(self.args[0], self.args[1],self.args[2])
 
 class ExcluirAluguelCommand(BaseCommand):
   def __init__(self, core, *args):
