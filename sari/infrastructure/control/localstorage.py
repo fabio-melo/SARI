@@ -4,6 +4,7 @@ from sari.model.usuario import Usuario
 from sari.model.aluguel import Aluguel
 from sari.model.produto import Produto
 from sari.infrastructure.observer.receiver import Receiver
+from sari.infrastructure.memento.snapshot import SnapshotMemento
 
 import pickle
 
@@ -11,6 +12,9 @@ class LocalController(ControlAbstract,Singleton):
 
   def __init__(self):
     self.receiver = Receiver()
+    self.snapshot_usuario = SnapshotMemento()
+    self.snapshot_produto = SnapshotMemento()
+    self.snapshot_aluguel = SnapshotMemento()
     self.usuarios = {}
     self.produtos = {}
     self.alugueis = {}
@@ -97,3 +101,16 @@ class LocalController(ControlAbstract,Singleton):
         self.alugueis.pop(id_trans)
     except:
       self.receiver.notificar_todos(f'Aluguel {id_trans} não encontrado')
+
+  def criar_memento(self):
+    self.snapshot_usuario.criar_snapshot(self.usuarios)
+    self.snapshot_produto.criar_snapshot(self.produtos)
+    self.snapshot_aluguel.criar_snapshot(self.alugueis)
+    self.receiver.notificar_todos(f'(Memento) Snapshot Criado')
+
+
+  def restaurar_estado(self):
+    self.snapshot_usuario.restaurar_ultimo_snapshot()
+    self.snapshot_produto.restaurar_ultimo_snapshot()
+    self.snapshot_aluguel.restaurar_ultimo_snapshot()
+    self.receiver.notificar_todos(f'(Memento) Desfeita Ultima Alteração')
