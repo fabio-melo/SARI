@@ -19,6 +19,10 @@ Projeto da Disciplina de Métodos de Projeto de Software.
 |   |   |   ├── oauth.py # MOCK - autenticação oauth 
 |   |   |   ├── password.py # MOCK -- autenticação senha
 |   |   |   ├── strategies.py # interface doStrategy 
+|   |   ├── command # comandos
+|   |   |   ├── commando.py # comandos base e concretos
+|   |   |   ├── interface.py # recebe comandos em string
+|   |   |   ├── invoker.py # invocador de comandos
 |   |   ├── control # persistencia e processamentogeral
 |   |   |   ├── localstorage.py # Persistencia Local
 |   |   |   ├── mariadb.py #Persistencia em Banco de Dados
@@ -27,6 +31,11 @@ Projeto da Disciplina de Métodos de Projeto de Software.
 |   |   ├── factory # fabrica da aplicação
 |   |   |   ├── sistema.py # inicializador do sistema SARI
 |   |   |   ├── sfactory.py # fabrica do SARI
+|   |   ├── memento # mementos
+|   |   |   ├── snapshot.py # classe que armazena mementos/estados
+|   |   ├── observer # observadores
+|   |   |   ├── observer.py # instancias de observador
+|   |   |   ├── receiver.py # receptor a ser instanciado
 |   |   ├── reports # gerador de relatorios
 |   |   |   ├── abstrato.py # abstração dos relatorios
 |   |   |   ├── geradorCSV.py # gera o relatorio em formato CSV
@@ -42,22 +51,24 @@ Projeto da Disciplina de Métodos de Projeto de Software.
 |   |   ├── produto.bin
 |   |   ├── usuario.bin
 ├── readme.md #este arquivo
-├── teste.py # teste das funcionalidades do SARI
+├── executar.py # teste das funcionalidades do SARI
+├── commandos.txt # aonde os comandos serão escritos
 
 ```
 
 ## Padrões Utilizados
+* Command
 * Façade
+* Memento
+* Observer
 * Singleton 
 * Strategy
 * Template
 * Factory
 
 
-## TO-DO
-* Interface Gráfica
-* Web-design
-* Visualizações do Flask
+## Testes
+rodar o executar.py disponível 
 
 ## Dependências
 ```text

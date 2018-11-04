@@ -15,6 +15,6 @@ class SnapshotMemento(object):
   def restaurar_ultimo_snapshot(self):
     try:
       return pickle.loads(self.estados.pop())
-    except Exception as e:
+    except:
       pass
   
